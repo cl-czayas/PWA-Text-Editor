@@ -8,10 +8,7 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js',
-      database: './src/js/database.js',
-      editor: './src/js/editor.js',
-      header: './src/js/header.js',
+      install: './src/js/install.js'
     },
     output: {
       filename: '[name].bundle.js',
@@ -20,20 +17,22 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'J.A.T.E.'
+        title: 'J.A.T.E'
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'src-sw.js',
       }),
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: 'Just Another Text Editor',
-        short_name: 'JATE',
-        description: 'Edit text!',
-        // background_color: '#7eb4e2',
-        // theme_color: '#7eb4e2',
-        start_url: './',
-        publicPath: './',
+        short_name: 'J.A.T.E',
+        description: 'Takes notes with JavaScript syntax highlighting!',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
+        start_url: '/',
+        publicPath: '/',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
